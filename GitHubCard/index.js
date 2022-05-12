@@ -56,16 +56,33 @@ const followersArray = [];
     </div>
 */
 
-const cardCreator = ({})=>{
+const cardCreator = ({avatar_url, html_url, name, username, location, followers, following, bio})=>{
   //to make each tag
-  const container = document.createElement('');
-  const img = document.createElement('');
-  const infoContainer = document.createElement('');
-  const name = document.createElement('');
-  const userName = document.createElement('');
-  const location = document.createElement('');
-  const profile = document.createElement('');
-  const link = document.createElement('');
+  const container = document.createElement('div');
+  const img = document.createElement('img');
+  const infoContainer = document.createElement('div');
+  const nameHeading = document.createElement('h3');
+  const userName = document.createElement('p');
+  const local = document.createElement('p');
+  const profile = document.createElement('p');
+  const link = document.createElement('a');
+  const followersPara = document.createElement('p');
+  const followingPara = document.createElement('p');
+  const bioPara = document.createElement('p');
+  container.classList.add('card');
+  infoContainer.classList.add('card-info');
+  nameHeading.classList.add('name');
+  userName.classList.add('username');
+  img.src = avatar_url;
+  link.href = html_url;
+  nameHeading.textContent = name;
+  userName.textContent = username;
+  local.textContent = `Location: ${location}`;
+  profile.textContent = 'Profile:';
+  link.textContent = html_url;
+  followersPara.textContent = `Followers: ${followers}`;
+  followingPara.textContent = `Following: ${following}`;
+  bioPara.textContent = `Bio: ${bio}`;
 }
 /*
   List of LS Instructors Github username's:
