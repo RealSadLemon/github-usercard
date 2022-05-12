@@ -1,8 +1,14 @@
+import axios from 'axios';
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+axios.get('https://api.github.com/users/RealSadLemon')
+  .then((res) =>{
+    console.log(res.data);
+  })
+  .catch();
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -50,6 +56,17 @@ const followersArray = [];
     </div>
 */
 
+const cardCreator = ({})=>{
+  //to make each tag
+  const container = document.createElement('');
+  const img = document.createElement('');
+  const infoContainer = document.createElement('');
+  const name = document.createElement('');
+  const userName = document.createElement('');
+  const location = document.createElement('');
+  const profile = document.createElement('');
+  const link = document.createElement('');
+}
 /*
   List of LS Instructors Github username's:
     tetondan
