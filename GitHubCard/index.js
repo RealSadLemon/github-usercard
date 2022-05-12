@@ -6,9 +6,11 @@ import axios from 'axios';
 */
 axios.get('https://api.github.com/users/RealSadLemon')
   .then((res) =>{
-    console.log(res.data);
+    document.querySelector('.cards').appendChild(cardCreator(res.data));
   })
-  .catch();
+  .catch((res) =>{
+    alert(`User: ${res.data.username} did not return anything`);
+  });
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -34,7 +36,16 @@ axios.get('https://api.github.com/users/RealSadLemon')
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['Arkoma', 'jzkime', 'gretchyn-hickman', 'Abargallo19'];
+for(let i = 0; i < followersArray.length; i++){
+  axios.get(`https://api.github.com/users/${followersArray[i]}`)
+  .then((res) =>{
+    document.querySelector('.cards').appendChild(cardCreator(res.data));
+  })
+  .catch((res) =>{
+    alert(`User: ${followersArray[i]} did not return anything`);
+  });
+}
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -83,7 +94,18 @@ const cardCreator = ({avatar_url, html_url, name, username, location, followers,
   followersPara.textContent = `Followers: ${followers}`;
   followingPara.textContent = `Following: ${following}`;
   bioPara.textContent = `Bio: ${bio}`;
-}
+  container.appendChild(img);
+  container.appendChild(infoContainer);
+  infoContainer.appendChild(nameHeading);
+  infoContainer.appendChild(userName);
+  infoContainer.appendChild(local);
+  infoContainer.appendChild(profile);
+  infoContainer.appendChild(followersPara);
+  infoContainer.appendChild(followingPara);
+  infoContainer.appendChild(bioPara);
+  profile.appendChild(link);
+  return container;
+};
 /*
   List of LS Instructors Github username's:
     tetondan
